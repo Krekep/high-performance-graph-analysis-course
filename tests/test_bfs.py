@@ -1,7 +1,7 @@
 import pytest
 
 from project import matrix_bfs
-from tests.utils import graph_from_edges_list
+from project.utils import graph_from_edges_list
 
 
 @pytest.mark.parametrize(
