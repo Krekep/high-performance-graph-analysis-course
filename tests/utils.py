@@ -3,7 +3,7 @@ import pygraphblas as pb
 
 
 def graph_from_edges_list(
-        n: int, edges: List[Tuple[int, int]], is_undirected: bool = True
+    n: int, edges: List[Tuple[int, int]], is_undirected: bool = True
 ) -> pb.Matrix:
     """
 
@@ -21,7 +21,7 @@ def graph_from_edges_list(
         Adjacency matrix for passed edges
     """
 
-    adj = pb.Matrix.sparse(pb.types.BOOL, n, n)
+    adj = pb.Matrix.sparse(pb.types.BOOL, nrows=n, ncols=n)
     for edge in edges:
         adj[edge[0], edge[1]] = True
         if is_undirected:

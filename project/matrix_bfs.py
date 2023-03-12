@@ -22,7 +22,7 @@ def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
 
     # some checks
     if (
-        start is None or len(graph.nrows) == 0
+        start is None or graph.nrows == 0
     ):  # start vertex undefined, e.g. for empty graph
         return []
     if not graph.square:
@@ -31,9 +31,9 @@ def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
         raise Exception("Incorrect number of start vertex. Number out of range.")
 
     # algorithm
-    vertices: List[Optional[int]] = [None] * len(graph.nrows)
+    vertices: List[Optional[int]] = [None] * graph.nrows
     vertices[0] = 0
-    visited = pb.Vector.dense(pb.BOOL, size=graph.nrows)
+    visited = pb.Vector.dense(pb.types.BOOL, size=graph.nrows)
     visited[0] = True
 
     prev_visited_size = 0
@@ -43,7 +43,7 @@ def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
         prev_visited_size = curr_visited_size
         visited = visited + visited @ graph
 
-        for (vertex, _) in visited.nonzero():
+        for vertex, _ in visited.nonzero():
             if vertices[vertex] is None:
                 vertices[vertex] = step
 
