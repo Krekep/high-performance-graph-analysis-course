@@ -47,6 +47,6 @@ def test_bfs():
         graph = params[0]
         start = params[1]
         expected = params[2]
-        
+
         actual = matrix_bfs.bfs(graph, start)
         assert actual == expected

@@ -27,7 +27,7 @@ def bfs(graph: pb.Matrix, start: int) -> List[int]:
         return []
     if not graph.square:
         raise Exception("Adjacency matrix must be square")
-    if not (0 < start < graph.nrows):
+    if not (0 <= start < graph.nrows):
         raise Exception("Incorrect number of start vertex. Number out of range.")
 
     # algorithm
