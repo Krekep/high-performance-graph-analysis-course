@@ -13,7 +13,7 @@ from tests.utils import graph_from_edges_list
             0,
             [0, 1, 2, 1],
         ),
-        (graph_from_edges_list(2, []), 0, [0, None]),
+        (graph_from_edges_list(2, []), 0, [0, -1]),
         (
             graph_from_edges_list(
                 3,

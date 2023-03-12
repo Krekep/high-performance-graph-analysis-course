@@ -3,7 +3,7 @@ from typing import List, Optional
 import pygraphblas as pb
 
 
-def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
+def bfs(graph: pb.Matrix, start: int) -> List[int]:
     """
     Provide graph breadth first search algorithm using matrix operations
 
@@ -31,7 +31,7 @@ def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
         raise Exception("Incorrect number of start vertex. Number out of range.")
 
     # algorithm
-    vertices: List[Optional[int]] = [None] * graph.nrows
+    vertices: List[int] = [-1] * graph.nrows
     vertices[0] = 0
     visited = pb.Vector.dense(pb.types.BOOL, size=graph.nrows)
     visited[0] = True
@@ -44,7 +44,7 @@ def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
         visited = visited + visited @ graph
 
         for vertex, _ in visited.nonzero():
-            if vertices[vertex] is None:
+            if vertices[vertex] == -1:
                 vertices[vertex] = step
 
         curr_visited_size = len(visited.nonzero())
