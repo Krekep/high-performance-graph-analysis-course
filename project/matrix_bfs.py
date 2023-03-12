@@ -21,7 +21,9 @@ def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
     """
 
     # some checks
-    if start is None or len(graph.nrows) == 0:  # start vertex undefined, e.g. for empty graph
+    if (
+        start is None or len(graph.nrows) == 0
+    ):  # start vertex undefined, e.g. for empty graph
         return []
     if not graph.square:
         raise Exception("Adjacency matrix must be square")
@@ -41,9 +43,9 @@ def bfs(graph: pb.Matrix, start: int) -> List[Optional[int]]:
         prev_visited_size = curr_visited_size
         visited = visited + visited @ graph
 
-        for node in visited:
-            if vertices[node] is None:
-                vertices[node] = step
+        for (vertex, _) in visited.nonzero():
+            if vertices[vertex] is None:
+                vertices[vertex] = step
 
         curr_visited_size = len(visited.nonzero())
         step += 1

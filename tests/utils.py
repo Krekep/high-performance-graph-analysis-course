@@ -2,7 +2,9 @@ from typing import List, Tuple
 import pygraphblas as pb
 
 
-def graph_from_edges_list(n: int, edges: List[Tuple[int, int]], is_undirected: bool = True) -> pb.Matrix:
+def graph_from_edges_list(
+        n: int, edges: List[Tuple[int, int]], is_undirected: bool = True
+) -> pb.Matrix:
     """
 
     Parameters
