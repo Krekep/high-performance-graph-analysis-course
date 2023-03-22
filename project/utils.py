@@ -63,6 +63,6 @@ def graph_to_ajd_matrix(graph: nx.MultiDiGraph) -> pb.Matrix:
     adj_matrix = pb.Matrix.sparse(
         pb.BOOL, graph.number_of_nodes(), graph.number_of_nodes()
     )
-    for (source, target) in graph.edges():
+    for source, target in graph.edges():
         adj_matrix[int(source), int(target)] = True
     return adj_matrix
