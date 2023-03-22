@@ -1,5 +1,6 @@
 black
 pre-commit
 pygraphblas
-pytest==7.1.3
+pytest
 scipy
+networkx
