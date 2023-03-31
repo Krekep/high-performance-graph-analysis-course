@@ -32,6 +32,41 @@ def graph_from_edges_list(
     return adj
 
 
+def weight_graph_from_edges_list(
+    n: int,
+    edges: List[Tuple[int, float, int]],
+    val_type=pb.types.FP32,
+    is_undirected: bool = True,
+) -> pb.Matrix:
+    """
+    Build adjacency matrix from list of edges
+
+    Parameters
+    ----------
+    n: int
+        Count of vertices
+    edges: List[Tuple[int, float, int]]
+        List of edges (from, weight, to)
+    val_type
+        Type of values in matrix
+    is_undirected: bool
+        Is edges undirected
+    Returns
+    -------
+    adj: pb.Matrix
+        Adjacency matrix for passed edges
+    """
+
+    adj = pb.Matrix.sparse(val_type, nrows=n, ncols=n)
+    for edge in edges:
+        u, w, v = edge
+        adj[u, v] = w
+        if is_undirected:
+            adj[v, u] = w
+
+    return adj
+
+
 def read_graph(path: str) -> nx.MultiDiGraph:
     """
     Read graph from file

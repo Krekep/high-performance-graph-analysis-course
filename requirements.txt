@@ -1,6 +1,7 @@
 black
-networkx
+networkx~=3.0
+numpy==1.20.3
 pre-commit
-pygraphblas
-pytest
+pygraphblas~=5.1.8.0
+pytest~=7.2.2
 scipy
