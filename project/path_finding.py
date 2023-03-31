@@ -40,6 +40,22 @@ def sssp(matrix: pb.Matrix, start_node: int):
 
 
 def mssp(matrix: pb.Matrix, start_nodes: list):
+    """
+    All-Pairs Shortest Path using Floyd-Warshall algorithm (APSP)
+
+    Parameters
+    ----------
+    matrix: pb.Matrix
+        Graph adjacency matrix
+    start_nodes: list
+        Start source for path MSSP
+
+    Returns
+    -------
+    D: list[tuple[int, list]]
+        Distances list D,
+        D[i] == -1 if i-th node is unreachable from start
+    """
     int_max = np.iinfo(np.int32).max
 
     d = pb.Matrix.dense(
@@ -71,9 +87,8 @@ def apsp(matrix: pb.Matrix):
 
     Returns
     -------
-    D: list
-        Distances list D,
-        D[i] == -1 if i-th node is unreachable from start
+    D: list[list]
+        Graph squared matrix, where D[i, j] = shortest_path_between_i_j
     """
 
     int_max = np.iinfo(np.int32).max
@@ -100,6 +115,20 @@ def apsp(matrix: pb.Matrix):
 
 
 def _matrix_to_list_of_lists(matrix: pb.Matrix):
+    """
+    Transform pygraphblas matrix to python list of lists matrix
+
+    Parameters
+    ----------
+    matrix: pb.Matrix
+        Matrix
+
+    Returns
+    -------
+    M: list[list]
+        Transformed matrix
+    """
+
     nrows, ncols = matrix.nrows, matrix.ncols
     rows, cols, vals = matrix.to_lists()
     result = []
