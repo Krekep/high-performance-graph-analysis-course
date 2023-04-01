@@ -33,7 +33,7 @@ def sssp(matrix: pb.Matrix, start_node: int):
     if d_cycle.isne(d):
         print("There is a negative cycle")
 
-    d.assign_scalar(-1, mask=(d == int_max))
+    # d.assign_scalar(-1, mask=(d == int_max))
     result = d.to_lists()[1]
 
     return result
@@ -70,7 +70,7 @@ def mssp(matrix: pb.Matrix, start_nodes: list):
     result = []
     for i, node in enumerate(start_nodes):
         line = d[i]
-        line.assign_scalar(-1, mask=(d[i] == int_max))
+        # line.assign_scalar(-1, mask=(d[i] == int_max))
         result.append((node, list(line.vals)))
 
     return result
@@ -108,7 +108,7 @@ def apsp(matrix: pb.Matrix):
     for k in range(1, num_iterations + 1):
         d.min_plus(d, out=d, accum=pb.INT64.min)
 
-    d.assign_scalar(-1, mask=(d == int_max))
+    # d.assign_scalar(-1, mask=(d == int_max))
     result = _matrix_to_list_of_lists(d)
 
     return result

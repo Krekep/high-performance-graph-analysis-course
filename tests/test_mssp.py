@@ -38,7 +38,7 @@ from project.utils import weight_graph_from_edges_list
             [0, 2],
             [
                 (0, [0, 10, 20]),
-                (2, [-1, -1, 0]),
+                (2, [2147483647, 2147483647, 0]),
             ],
         ),
     ],
